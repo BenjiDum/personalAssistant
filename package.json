@@ -1,0 +1,27 @@
+{
+  "name": "personalassistant",
+  "version": "0.0.1",
+  "description": "first try to build my bot",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BenjiDum/personalAssistant.git"
+  },
+  "keywords": [
+    "bot",
+    "assistant"
+  ],
+  "author": "Benjamin Dumas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BenjiDum/personalAssistant/issues"
+  },
+  "homepage": "https://github.com/BenjiDum/personalAssistant#readme",
+  "dependencies": {
+    "botbuilder": "^3.2.3",
+    "restify": "^4.1.1"
+  }
+}
