@@ -27,4 +27,9 @@ bot.dialog('/', function (session) {
     session.send("Hello Benj");
 });
 
+// Serve a static web page
+server.get(/.*/, restify.serveStatic({
+	'directory': '.',
+	'default': 'index.html'
+}));
 
