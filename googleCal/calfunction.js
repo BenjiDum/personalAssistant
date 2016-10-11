@@ -11,7 +11,7 @@ var TOKEN_DIR = (process.env.HOME || process.env.HOMEPATH ||
 var TOKEN_PATH = TOKEN_DIR + 'calendar-nodejs-quickstart.json';
 
 module.exports = {
-  init : function(session){
+  init : function(session, builder){
     // Load client secrets from a local file.
         fs.readFile('client_secret.json', function processClientSecrets(err, content) {
         if (err) {
@@ -21,7 +21,7 @@ module.exports = {
         // Authorize a client with the loaded credentials, then call the
         // Google Calendar API.
         console.log('Before authorize');
-        authorize(JSON.parse(content), session, listEvents);
+        authorize(JSON.parse(content), session, builder, listEvents);
         });
   }
 };
@@ -35,13 +35,13 @@ module.exports = {
  * @param {getEventsCallback} callback The callback to call with the authorized
  *     client.
  */
-function getNewToken(oauth2Client, session, callback) {
+function getNewToken(oauth2Client, session, builder, callback) {
         var authUrl = oauth2Client.generateAuthUrl({
             access_type: 'offline',
             scope: SCOPES
         });
         console.log('Authorize this app by visiting this url: ', authUrl);
-        session.send('Authorize this app by visiting this url: ', authUrl);
+        session.send('Authorize this app by visiting this url: %s', authUrl);
         var rl = readline.createInterface({
             input: process.stdin,
             output: process.stdout
@@ -85,7 +85,7 @@ function storeToken(token) {
  * @param {Object} credentials The authorization client credentials.
  * @param {function} callback The callback to call with the authorized client.
  */
- function authorize(credentials, session, callback) {
+ function authorize(credentials, session, builder, callback) {
   console.log('authorize');
   var clientSecret = credentials.installed.client_secret;
   var clientId = credentials.installed.client_id;

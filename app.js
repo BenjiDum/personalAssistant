@@ -81,8 +81,6 @@ bot.dialog('/google', [
     function (session) {
         session.send('Laisse moi 5 secondes');
         session.send('Je demande à Google !');
-        googleCalHandler.init(session);
-        
-        
+        googleCalHandler.init(session, builder);      
     }
 ]);
