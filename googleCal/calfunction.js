@@ -23,7 +23,18 @@ module.exports = {
         console.log('Before authorize');
         authorize(JSON.parse(content), session, builder, listEvents);
         });
+  },
+  initDialog : function(session, builder){
+    fs.readFile('client_secret.json', function processClientSecrets(err, content) {
+        if (err) {
+            console.log('Error loading client secret file: ' + err);
+            return;
+        }
+        authorize(JSON.parse(content), session, builder, listEvents);
+
+    });
   }
+
 };
 
 
@@ -46,7 +57,7 @@ function getNewToken(oauth2Client, session, builder, callback) {
             input: process.stdin,
             output: process.stdout
         });
-
+        
         rl.question('Enter the code from that page here: ', function(code) {
             rl.close();
             oauth2Client.getToken(code, function(err, token) {
