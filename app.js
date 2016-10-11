@@ -73,7 +73,7 @@ intents.matches(/^cal/i, [
 
 intents.matches(/^google/i, [
     function (session) {
-        session.beginDialog('/googleUpdated');
+        session.beginDialog('/google');
     }
 ]);
 
@@ -100,6 +100,7 @@ bot.dialog('/profile', [
     }
 ]);
 
+/*
 bot.dialog('/google', [
     function (session) {
         session.send('Laisse moi 5 secondes');
@@ -110,10 +111,10 @@ bot.dialog('/google', [
         session.userData.name = results.response;
         session.endDialog();
     }
-]);
+]);*/
 
 
-bot.dialog('/googleUpdated',[
+bot.dialog('/google',[
     function (session) {
         //session.send('Laisse moi 5 secondes');
         session.send('Je demande à Google !');
