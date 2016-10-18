@@ -65,7 +65,7 @@ intents.matches(/^change profile/i, [
     }
 ]);
 
-intents.matches(/^cal/i, [
+intents.matches(/^calendrier/i, [
     function (session) {
         session.beginDialog('/google');
     }
@@ -79,7 +79,7 @@ intents.matches(/^google/i, [
 
 intents.matches(/^timesheet/i, [
     function (session) {
-        session.beginDialog('/timesheet');
+        session.send('Tu me prends pour ton réferent ou quoi ?');
     }
 ]);
 
@@ -109,11 +109,6 @@ bot.dialog('/profile', [
     }
 ]);
 
-bot.dialog('/timesheet', [
-      function (session) {
-        session.send('Tu me prends pour ton réferent ou quoi ?');
-    }
-]);
 
 bot.dialog('/google',[
     function (session, args, next) {
