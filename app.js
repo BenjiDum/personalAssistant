@@ -77,6 +77,13 @@ intents.matches(/^google/i, [
     }
 ]);
 
+intents.matches(/^timesheet/i, [
+    function (session) {
+        session.beginDialog('/timesheet');
+    }
+]);
+
+
 intents.onDefault([
     function (session, args, next) {
         console.log('dialog default');
@@ -102,6 +109,11 @@ bot.dialog('/profile', [
     }
 ]);
 
+bot.dialog('/timesheet', [
+      function (session) {
+        session.send('Tu me prends pour ton réferent ou quoi ?');
+    }
+]);
 
 bot.dialog('/google',[
     function (session, args, next) {
