@@ -141,6 +141,7 @@ bot.dialog('/google',[
     },
     function (session, results) {
         listEvents(session.userData.oauth2Client, session);
+        session.endDialog();
     }
 ]);
 
